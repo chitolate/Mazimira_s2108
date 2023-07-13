@@ -1,0 +1,727 @@
+/* ボタン初期設定の打消し */
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    font-family:'游明朝 Medium', serif;
+}
+/* inputクラスの打消し */
+input {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    outline: 0;
+    box-sizing: border-box;
+}
+/* body */
+body{
+    position:  relative;        /* 子要素の起点を指定 */
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: auto;
+    width:100%; /*ページ全体の幅は100%と指定する*/	
+    /*
+    clip-path: inset(0 0); /* クリッピング */
+    overflow:hidden; /* ページはみ出たら見せない */
+    z-index: 1;
+    background: radial-gradient(
+        rgb(244, 244, 244) 60%,
+        rgb(203, 203, 203) 80%, 
+        #838383 100%
+    );
+}
+/*bodyの背景*/
+/*サビの時のbodyの背景*/
+.sabi{
+    background: radial-gradient(
+        rgb(0, 0, 0) 60%,
+        rgb(40, 40, 40) 80%, 
+        #838383 100%
+    );
+    z-index: 2;
+}
+/* loading画面 */
+.loading{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    z-index: 20;
+}
+/* loading+buttonの画面 */
+.load_sikaku{
+    position:  relative;        /* 子要素の起点を指定 */
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    margin: auto;
+    width: 400px;
+    height: 110px;
+    z-index: 2;
+}.load_sikaku span{    
+    font-family:'游明朝 Medium', serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    z-index: 22;
+}.load_sikaku input{    
+    font-family:'游明朝 Medium', serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    z-index: 22;
+    transition-property: font-size;
+    transition: ease 0.3s;
+}.load_sikaku input:hover{
+    font-size: 30px;
+}
+/* loadingの動いてる棒 */
+.border_up{
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    width: 400px;
+    height: 100px;
+    border: 1px;
+    border-top: solid;
+    z-index: 10;
+    pointer-events: none;   /*クリック無効*/
+    /*線の動き3秒かけて動く。永遠にループ*/
+	animation: border_up_move 3s ease-in-out infinite;
+}.border_low{
+    position: absolute;
+    top:0;
+    margin: auto;
+    width: 400px;
+    height: 100px;
+    border: 1px;
+    border-bottom: solid;
+    z-index: 10;
+    pointer-events: none;   /*クリック無効*/
+	animation: border_low_move 3s ease-in-out infinite;
+}
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes border_up_move{
+	0%{ width: 0px;
+        right: 0;
+		opacity: 0; }
+	40%{width: 400px;
+        right: 0;
+		opacity: 1; }
+	90%{width: 0px;
+        right: 400px;
+		opacity: 0; }
+	100%{width: 0px;
+        right: 400px;
+		opacity: 0; }
+}/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes border_low_move{
+	0%{     width: 0px;
+            left: 0;
+		    opacity: 0;     }
+	40%{    width: 400px;
+            left: 0;
+		    opacity: 1;     }
+    90%{    width: 0px;
+            left: 400px;
+		    opacity: 0;     }
+    100%{   width: 0px;
+            left: 400px;
+		    opacity: 0;     }
+}
+
+
+
+/* menuボタンのとこ */
+.menu_sikaku{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}.menu_sikaku button{    
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    text-align:center;
+    height: 50px;
+    width: 150px;
+    border: 0px solid rgb(158, 158, 158);
+    user-select: none;          /* 選択禁止 */
+    animation: select_fin_anime 0.3s ease-in 0s forwards;
+}.menu_sikaku button:hover{
+    animation: select_anime 0.3s ease-out 0s forwards;
+    border: 0px solid rgb(158, 158, 158);
+}
+/* ボタン選んだ時のアニメーション */
+@keyframes select_anime {
+    0%{
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        transform: translateX(0);
+        transform: translateY(0);
+    }
+    100%{
+        border-right-width: 5px;
+        border-bottom-width: 5px;
+        transform: translateX(-5px);
+        transform: translateY(-5px);
+    }
+}
+@keyframes select_fin_anime {
+    0%{
+        border-right-width: 5px;
+        border-bottom-width: 5px;
+        transform: translateX(-5px);
+        transform: translateY(-5px);
+    }
+    100%{
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        transform: translateX(0);
+        transform: translateY(0);
+    }
+}
+
+/* 説明のとこ */
+.explane{
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    width: 40%;
+    height: 85%;
+    z-index: 2;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;/* 両端ぞろえ */
+}
+.ex_sikaku{
+    font-family:'游明朝 Medium', serif;
+    writing-mode: vertical-rl;
+    text-orientation: upright;  /* 数値も縦書き */    
+    user-select: none;          /* 選択禁止 */
+    width: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 25px;
+    z-index: 10;
+}
+.btn_main{
+    position: absolute;
+    bottom: 3%;
+    right: calc(50% - 75px);
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    text-align:center;
+    height: 50px;
+    width: 150px;
+    border: 0px solid rgb(158, 158, 158);
+    animation: select_fin_anime 0.3s ease-in 0s forwards;
+}
+.btn_main:hover{
+    animation: select_anime 0.3s ease-out 0s forwards;
+    border: 0px solid rgb(158, 158, 158);
+}
+.ex_sikaku span{
+    /*これなに？*/
+    display: inline-block;
+    z-index: 13;
+    animation: rotate_char 0.5s ease-out 0s forwards;
+}
+.mozi_ex{
+    display: inline-block;
+    z-index: 13;
+    animation: rotate_char 0.5s ease-out 0s forwards;
+}
+@keyframes rotate_char {
+    0%{
+        transform: translateY(15px);
+		opacity: 0.1;
+    }
+    100%{
+        transform: translateY(0);
+		opacity: 1;
+
+    }
+    
+}
+/* 〇 */
+.maru{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 4px solid;
+    color: #b8b8b8;
+    text-align: center;
+    pointer-events: none;   /*クリック無効*/
+    animation: fuwafuwa 0.8s ease-out 0s forwards;
+    z-index: 10;
+}
+@keyframes fuwafuwa {
+    0%{
+        width: 50px;
+        height: 50px;
+        left: 0px;
+        top: -5px;
+    }
+    100%{
+        width: 800px;
+        height: 800px;
+        left: -395px;
+        top: -400px;
+		opacity: 0;
+    }   
+}
+@media screen and (max-width: 1300px){
+    /* 私のパソコン */
+        
+    /* 丸の設定のとこ */
+    .menuver{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+        width: 200px;
+        height: 140px;
+        border-radius: 10%;
+        border: rgb(8, 19, 154) solid;
+        border-width: 0px 3px 0px 3px;
+        animation: fadeIn 0.3s ease-out 0s forwards;
+    }.menuver_sabi{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+        width: 200px;
+        height: 240px;
+        border-radius: 10%;
+        border: rgb(8, 19, 154) solid;
+        border-width: 0px 3px 0px 3px;
+        animation: fadeIn 0.3s ease-out 0s forwards;
+    }.mozi_mode{
+        width: 100%;
+        height: auto;
+    }.mode_sikaku{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: 28px;
+    }
+    .mozi_mode_btn{
+        color: white;
+        width: 100%;
+        font-size: 14px;
+    }.mode_check{
+        width: 14px;
+        height: 14px;
+        border: 1px solid white;
+        background-color: rgb(0, 0, 0);
+    }.mode_Oncheck{
+        width: 14px;
+        height: 14px;
+        border: 1px solid black;
+        background-color: rgb(255, 255, 255);
+    }
+    .change_volume{
+        width: 100%;
+        height: 75px;
+        text-align: center;
+    }.volume_menu{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 35px;
+    }.volume_ver{
+        /* Track のスタイルを追加 */
+        background: #7c7c7c;  /* Track の背景色 */
+        height: 6px;  /* Track の高さ */
+        border-radius: 8px;  /* Track の角丸 */
+    }.vol_size{
+        font-size: 17px;
+        color: black;
+    }
+    .change_color{
+        display: flex;
+        justify-content: space-around;/* 両端ぞろえ */
+        flex-wrap: wrap;
+        width: 100%;
+        height: 80px;
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        z-index: 30;
+    }.label_ChColor{
+        position: relative;
+        font-family:'游明朝 Medium', serif;
+        text-align: center;
+        color: black;
+        width: 100%;
+        font-size: 16px;
+        z-index: 32;
+    }.sikaku_ChColor{
+        position: absolute;
+        width: 60%;
+        height: 26px;
+        left: 40px;
+        border-bottom: 2px white solid;
+        z-index: 33;
+    }.ch_btn{
+        position: relative;
+        font-size: 0px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 2px solid;
+        z-index: 35;
+    }.close_btn{
+        color: black;
+        -webkit-text-stroke: 1px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 20px;
+        font-weight: bold;
+        width: 30px;
+        height: 30px;
+        z-index: 35;
+    }
+}
+@media screen and (min-width : 1300px) {   
+    /* 丸の設定のとこ */
+    .menuver{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+        width: 250px;
+        height: 160px;
+        border-radius: 10%;
+        border: rgb(8, 19, 154) solid;
+        border-width: 0px 3px 0px 3px;
+        animation: fadeIn 0.3s ease-out 0s forwards;
+    }.menuver_sabi{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+        width: 250px;
+        height: 280px;
+        border-radius: 10%;
+        border: rgb(8, 19, 154) solid;
+        border-width: 0px 3px 0px 3px;
+        animation: fadeIn 0.3s ease-out 0s forwards;
+    }.mode_sikaku{
+        display: flex;
+        align-items: center;
+        margin-left: 20%;
+        width: 80%;
+        height: 28px;
+    }
+    .mozi_mode_btn{
+        color: white;
+        width: 70%;
+        font-size: 16px;
+    }.mode_check{
+        width: 16px;
+        height: 16px;
+        border: 1px solid white;
+        background-color: rgb(56, 56, 56);
+    }.mode_Oncheck{
+        width: 16px;
+        height: 16px;
+        background-color: rgb(170, 170, 170);
+    }
+    .change_volume{
+        width: 100%;
+        height: 75px;
+        text-align: center;
+    }.volume_menu{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+    }.volume_ver{
+        /* Track のスタイルを追加 */
+        background: #7c7c7c;  /* Track の背景色 */
+        height: 8px;  /* Track の高さ */
+        border-radius: 8px;  /* Track の角丸 */
+    }.vol_size{
+        font-size: 20px;
+        color: black;
+    }
+    .change_color{
+        display: flex;
+        justify-content: space-around;/* 両端ぞろえ */
+        flex-wrap: wrap;
+        width: 250px;
+        height: 80px;
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        z-index: 30;
+    }.label_ChColor{
+        position: relative;
+        font-family:'游明朝 Medium', serif;
+        text-align: center;
+        color: black;
+        width: 250px;
+        font-size: 20px;
+        z-index: 32;
+    }.sikaku_ChColor{
+        position: absolute;
+        width: 60%;
+        height: 30px;
+        left: 50px;
+        border-bottom: 2px white solid;
+        z-index: 33;
+    }.ch_btn{
+        position: relative;
+        font-size: 0px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid;
+        z-index: 35;
+    }.close_btn{
+        color: black;
+        -webkit-text-stroke: 1px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 20px;
+        font-weight: bold;
+        width: 30px;
+        height: 30px;
+        z-index: 35;
+    }
+}
+@keyframes fadeIn {
+    0%{
+        clip-path: inset(80px 200px 0px 0px);
+        filter: blur(4px);
+        /*　下　　*/
+        opacity: 0;
+    }
+    90%{
+        clip-path: inset(0px 0px 0px 0px);
+        filter: blur(0);
+    }
+    100%{
+        clip-path: 0;
+        opacity: 1;
+    }
+}
+
+.no-select{
+    /* 範囲選択禁止 */
+    user-select: none;      
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.item-none{
+    display: none;          /*隠す*/
+}
+.item-hide{
+    visibility:hidden;      /*見えなくする*/
+}
+
+/* 本編突入 */
+.square{
+    /* 全square対象 */
+    position: absolute;
+    /*position:  relative;        /* 子要素の起点を指定 */
+    height: 400px;
+    z-index: 30;
+    width: 50px;
+    top: 50%;
+    /* background-color: rgba(255, 255, 255,0.5); */
+    transform: translateY(140px);
+    transition-duration: 2s;
+    transition-property: translateY();
+    transition-timing-function: linear;
+    bottom: auto;
+}
+.squrare_posi1{
+    left: 200px;
+}
+.squrare_posi2{
+    left: 300px;
+}
+.squrare_posi3{
+    left: 400px;
+}
+.squrare_posi4{
+    left: 500px;
+    /*background-color: rgba(186, 186, 186,0);*/
+}
+.squrare_posi5{
+    left: 600px;
+}
+.squrare_posi6{
+    left: 700px;
+}
+.squrare_posi7{
+    left: 800px;
+}
+.squrare_posi8{
+    left: 900px;
+}
+.squrare_posi9{
+    left: 1000px;
+}
+.squrare_posi10{
+    left: 1100px;
+    /*background-color: rgba(186, 186, 186,0);*/
+}
+.squrare_posi11{
+    left: 1200px;
+}
+.squrare_posi12{
+    left: 1300px;
+}
+.squrare_posi13{
+    left: 1400px;
+}
+.squrare_posi14{
+    left: 1500px;
+    /*background-color: rgba(186, 186, 186,0);*/
+}
+.squrare_posi15{
+    left: 1600px;
+}
+.squrare_posi16{
+    left: 1700px;
+}
+.squrare_posi17{
+    left: 1800px;
+}
+.squrare_posi18{
+    left: 1900px;
+}
+.squrare_posi19{
+    left: 2000px;
+}
+.mozi_title{
+    position:  relative;        /* 子要素の起点を指定 */
+    font-family:'游明朝 Medium', serif;
+    font-size: 40px;
+    z-index: 40;
+    display:flex;
+    user-select: none;          /* 選択禁止 */
+    flex-flow: column;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+.mozi{
+    position:  relative;        /* 子要素の起点を指定 */
+    font-family:serif;
+    font-size: 34px;
+    z-index: 40;
+    display:flex;
+    flex-flow: column;
+    user-select: none;          /* 選択禁止 */
+    writing-mode: vertical-rl;  /* 縦書き */
+    text-orientation: upright;  /* 数値も縦書き */
+    cursor: pointer;            /* カーソルをポインターにする */
+}
+.mozi0{
+    color: blue;
+}
+.mozi1{
+    color: orange;
+}
+.mozi2{
+    color: #00AE95;
+}
+.mozi3{
+    color: pink;
+}
+.mozi4{
+    color: red;
+}.mozi5{
+    color: yellow;
+}
+.mozi6{
+    color: gray;
+}
+.moziC{
+    color : white;
+}
+.hamburger{
+    /* ハンバーガーメニュー */
+    position: relative;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    border-radius: 15%;
+    border: 1px rgb(8, 19, 154) solid;
+    border-width: 0px 2px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(213, 213, 213, 0.6);
+    z-index: 30;
+    opacity: 0.8;
+}.gear_hole{
+    /* 歯車の中の円 */
+    width: 20px;
+    height: 20px;
+    background-color: rgba(213, 213, 213, 0.6);
+    border-radius: 50%; /*円にする*/
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 35;
+}.gear_block{
+    position: absolute;
+    width: 44px;
+    height: 10px;
+    top: 20px;
+    left: 3px;
+    background-color: rgb(91, 91, 91);
+    z-index: 32;
+}.gear_base{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%; /*円にする*/
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgb(91, 91, 91);
+    z-index: 32;
+}
+.gear_block:nth-child(3){
+    transform: rotate(45deg);
+}.gear_block:nth-child(4){
+    transform: rotate(90deg);
+}.gear_block:nth-child(5){
+    transform: rotate(135deg);
+}
+

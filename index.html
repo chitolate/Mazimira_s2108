@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1, user-scalable=no">
+    <!-- タイトル -->
+    <title>マジカルミライ プロコン</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/textalive-app-api/dist/index.js"></script>
+</head>
+<body>
+  
+  <div id="main" class="item-none no-select">
+    <!--button onclick="size_get()">size_get</button-->
+    <div class="load_sikaku" id="start" onclick="start()">
+      <input type="button" class="mozi6" value="再生">
+      <div class="border_up"></div>
+      <div class="border_low"></div>
+    </div>
+    <!-- <input type="button" class="start_btn no-active" id="start" onclick="start()" value="再生"> -->
+  </div>
+
+  <div class="loading" id="sub">
+    <div class="load_sikaku" id="loading">
+      <span class="no-select">Now Loading...</span>
+      <div class="border_up"></div>
+      <div class="border_low"></div>
+    </div>
+    <div class="explane item-none" id="explane">
+    </div>
+
+  </div>
+  <div class="loading item-none" id="en_btn">
+    <div class="hamburger" id="hm_menu" onclick="open_menu(0)">
+      <div class="gear_base"></div>
+      <div class="gear_hole"></div>
+      <div class="gear_block"></div>
+      <div class="gear_block"></div>
+      <div class="gear_block"></div>
+      <div class="gear_block"></div>
+    </div>
+    <div class="menuver item-none" id="op_menu">
+    <!-- <div class="menuver_sabi" id="op_menu"> -->
+      <div class="mozi_mode item-none" id="mozi_mode">        
+        <div class="label_ChColor" id="sabi_Change">
+        <div class="sikaku_ChColor"></div>
+        文字の演出の変更
+        </div>
+        <button class="mode_sikaku" onclick="change_mozimozi(0)">
+          <div class="mode_Oncheck" id="mode_0"></div>
+          <div class="mozi_mode_btn">ランダムひらがな</div>
+        </button>
+        <button class="mode_sikaku" onclick="change_mozimozi(1)">
+          <div class="mode_check" id="mode_1"></div>
+          <div class="mozi_mode_btn">ランダムカタカナ</div>
+        </button>
+        <button class="mode_sikaku" onclick="change_mozimozi(2)">
+          <div class="mode_check" id="mode_2"></div>
+          <div class="mozi_mode_btn">ランダム歌詞抽出</div>
+        </button>
+      </div>
+      <div class="change_volume">
+        <div class="label_ChColor" id="sabi_Change">
+        <div class="sikaku_ChColor"></div>
+        音量の変更
+        </div>
+        <div class="volume_menu">
+          <input type="range" min="0" max="100" value="100" class="volume_ver" onchange="change_volume(this)">
+          <span class="vol_size" id="vol_size">100</span>
+        </div>
+      </div>
+      <div class="change_color">
+        <div class="label_ChColor" id="sabi_Change">
+          <div class="sikaku_ChColor"></div>
+          円の色の変更
+        </div>
+        <button class="mozi6 ch_btn" onclick="change_maru_color(this)">灰</button>
+        <button class="mozi0 ch_btn" onclick="change_maru_color(this)">青</button>
+        <button class="mozi1 ch_btn" onclick="change_maru_color(this)">橙</button>
+        <button class="mozi2 ch_btn" onclick="change_maru_color(this)">緑</button>
+        <button class="mozi3 ch_btn" onclick="change_maru_color(this)">桃</button>
+        <button class="mozi4 ch_btn" onclick="change_maru_color(this)">赤</button>
+        <button class="mozi5 ch_btn" onclick="change_maru_color(this)">黄</button>
+      </div>
+      <button class="close_btn" id="close_btn" onclick="open_menu(1)">✕</button>
+    </div>
+  </div>
+    
+  <div id="media"></div>
+  <!-- jsファイルの呼び出し -->
+  <script src="index.js"></script>
+    
+</body>
+
+</html>
