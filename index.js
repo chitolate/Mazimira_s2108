@@ -59,40 +59,6 @@ for (let FB = 0; FB < 3; FB++) {
     mode_num.push(document.getElementById("mode_"+FB));    
 }
 
-//浮気した回数
-let uwaki = 0;
-body.onblur = () => {   
-    if (uwaki >= 5) {
-        title.textContent = "ごめんって，帰ってきて！"
-        uwaki = 0;
-    }
-    else title.textContent = "待って，行かないで！！" 
-    uwaki++;  
-/* フォーカスされている */}
-body.onfocus = () => { 
-    switch (uwaki) {
-        case 1:
-            title.textContent = "おかえり！！！";
-            break;
-    
-        case 2:
-            title.textContent = "どこいってたの？";
-            break;
-        case 3:
-            title.textContent = "もうどこにも行かないで！！！";
-            break;
-        case 4:
-            title.textContent = "私のこと嫌い..？";
-            break;
-	    case 5:
-	        title.textContent = "もう知らないから";
-	        break;
-        default:
-            title.textContent = "   ";
-            break;
-    }
-/* フォーカスされていない */}
-
 let c = null;
 
 let sikaku_time = [];       //四角を作る時間
