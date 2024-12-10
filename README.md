@@ -2,7 +2,7 @@
 マジカルミライ2023 プログラミング・コンテストへの応募作品．(coloré paroles)
 
 こんばんは．作品を見てくださりありがとうございます．
-実際の作品はこちら(https://seat-change.sakura.ne.jp/mazimira/)．
+実際の作品は[こちら](https://seat-change.sakura.ne.jp/mazimira/)．
 
 以下アピールポイントです．
 
